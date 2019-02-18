@@ -9,6 +9,8 @@ public class Equipment : Item {
 	public EquipmentSlot equipmentSlot;
 	public int armorModifier;
 	public int damageModifier;
+	public SkinnedMeshRenderer mesh;
+	public EquipmentMeshRegion[] coveredMeshRegions;
 
 
 	public override void Use()
@@ -20,4 +22,5 @@ public class Equipment : Item {
 }
 
 
-public enum EquipmentSlot { Head, Chest, Legs, Weapon, Ammunition } 
+public enum EquipmentSlot { Chest, Legs, Weapon, Ammunition, Head, Feet }
+public enum EquipmentMeshRegion { Legs, Arms, Torso } // Corresponds to body blend shapes
