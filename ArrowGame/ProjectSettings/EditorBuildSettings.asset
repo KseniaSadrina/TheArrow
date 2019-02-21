@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu/MainMenu.unity
     guid: 5f15b3c52a9bdd64db4b5cb8080704e1
   - enabled: 1
+    path: Assets/Scenes/Oliver's Island.unity
+    guid: a58845ffea71d18439b361cd8b4391b7
+  - enabled: 0
     path: Assets/Scenes/StarlingCity/StarlingCityScene.unity
     guid: 91ecec362723c8d418f638dae2d341df
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CombatScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

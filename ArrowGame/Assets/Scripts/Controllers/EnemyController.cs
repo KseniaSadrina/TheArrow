@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour {
 	Transform target;
 	NavMeshAgent agent;
 	bool chasingTarget = false;
+	CharacterCombat combat;
 	// Patrol positions 
 
 	public Transform position1;
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
 		target = PlayerManager.instance.player.transform;
+		combat = GetComponent<CharacterCombat>();
 	}
 	
 	void Update () {
@@ -32,8 +34,14 @@ public class EnemyController : MonoBehaviour {
 
 			if (distance <= agent.stoppingDistance)
 			{
+				// Interupt the patroll
 				chasingTarget = true;
+				
 				// Attack the target
+				var targetStats = target.GetComponent<CharacterStats>();
+				if (targetStats != null)
+					combat.Attack(targetStats);
+				
 				FaceTarget();
 			}
 		}
@@ -53,10 +61,15 @@ public class EnemyController : MonoBehaviour {
 		
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider collider)
 	{
 		if (chasingTarget) return;
-		switch (other.tag)
+		Patroll(collider);
+	}
+
+	private void Patroll(Collider collider)
+	{
+		switch (collider.tag)
 		{
 			case "1":
 				agent.SetDestination(position2.position);
