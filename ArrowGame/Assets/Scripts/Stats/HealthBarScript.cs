@@ -8,11 +8,28 @@ public class HealthBarScript : MonoBehaviour {
 
 	public GameObject uiPrefab;
 	public Transform target;
-	float visibleTime = 5;
 
+	float visibleTime = 5;
+	float lastTimeVisible;
 	Transform ui;
 	Image healthSlider;
 	Transform cam;
+
+
+	void OnHealthChanged(int maxHealth, int currentHealth)
+	{
+		if (ui != null)
+		{
+			ui.gameObject.SetActive(true);
+			lastTimeVisible = Time.time;
+
+			float healthPercent = (float)currentHealth / maxHealth;
+			healthSlider.fillAmount = healthPercent;
+
+			if (currentHealth <= 0)
+				Destroy(ui.gameObject);
+		}
+	}
 
 	void Start () {
 		cam = Camera.main.transform;
@@ -23,14 +40,23 @@ public class HealthBarScript : MonoBehaviour {
 			{
 				ui = Instantiate(uiPrefab, c.transform).transform;
 				healthSlider = ui.GetChild(0).GetComponent<Image>();
+				ui.gameObject.SetActive(false);
 				break;
 
 			}
-		}		
+		}
+
+		GetComponent<CharacterStats>().onHealthChanged += OnHealthChanged;
 	}
 	
 	void LateUpdate () {
-		ui.position = target.position;
-		ui.forward = -cam.forward;
+		if (ui != null)
+		{
+			ui.position = target.position;
+			ui.forward = -cam.forward;
+
+			if (Time.time - lastTimeVisible > visibleTime)
+				ui.gameObject.SetActive(false);
+		}
 	}
 }
