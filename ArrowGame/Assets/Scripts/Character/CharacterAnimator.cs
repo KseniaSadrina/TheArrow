@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -14,8 +15,10 @@ public class CharacterAnimator : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent>();
 		animator = GetComponentInChildren<Animator>();
 		combat = GetComponent<CharacterCombat>();
+
 		combat.OnAttack += OnAttack;
 	}
+
 	
 	protected virtual void Update () {
 		float speedPercent = agent.velocity.magnitude / agent.speed;

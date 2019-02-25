@@ -19,6 +19,7 @@ public class EnemyController : MonoBehaviour {
 	public Transform position2;
 	public Transform position3;
 	public Transform position4;
+	public bool isPatrolling;
 
 	void Start () {
 		agent = GetComponent<NavMeshAgent>();
@@ -69,6 +70,7 @@ public class EnemyController : MonoBehaviour {
 
 	private void Patroll(Collider collider)
 	{
+		if (!isPatrolling) return;
 		switch (collider.tag)
 		{
 			case "1":

@@ -10,7 +10,8 @@ public class CharacterStats : MonoBehaviour {
 
 	public Stat damage;
 	public Stat armor;
-	public event System.Action<int, int> onHealthChanged;
+	public event Action<int, int> onHealthChanged;
+	public event Action onDied;
 
 	private void Awake()
 	{
@@ -35,5 +36,7 @@ public class CharacterStats : MonoBehaviour {
 	public virtual void Die()
 	{
 		Debug.Log(transform.name + " has died :(");
+		if (onDied != null)
+			onDied.Invoke();
 	}
 }

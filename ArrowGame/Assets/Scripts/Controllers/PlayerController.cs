@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (EventSystem.current.IsPointerOverGameObject())
-			return;
+		//if (EventSystem.current.IsPointerOverGameObject())
+		//	return;
 
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -69,9 +69,9 @@ public class PlayerController : MonoBehaviour
 				focusedItem.OnDefocused();
 
 			focusedItem = newItem;
-			focusedItem.OnFocused(transform);
+			motor.FollowTarget(newItem);
 		}
 
-		motor.FollowTarget(newItem);
+		focusedItem.OnFocused(transform);
 	}
 }
