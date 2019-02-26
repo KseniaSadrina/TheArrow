@@ -10,7 +10,7 @@ public class Item : ScriptableObject {
 
 	public virtual void Use()
 	{
-		Debug.Log("Using item: " + name);
+		//Debug.Log("Using item: " + name);
 	}
 	public void RemoveFromInventory()
 	{

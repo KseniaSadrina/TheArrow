@@ -37,6 +37,7 @@ public class Enemy : Interactable {
 
 	protected virtual void HandleDeath()
 	{
+		if (myStats != null) myStats.onDied -= OnEnemyDied;
 		Destroy(gameObject);
 	}
 }

@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour {
 	{
 		if (instance != null)
 		{
-			Debug.LogWarning("More than one instance of inventory");
+			//Debug.LogWarning("More than one instance of inventory");
 			return;
 		}
 
@@ -34,7 +34,7 @@ public class Inventory : MonoBehaviour {
 		{
 			if (items.Count >= space)
 			{
-				Debug.Log("Can't store more items in the inventory");
+				//Debug.Log("Can't store more items in the inventory");
 				return false ;
 			}
 

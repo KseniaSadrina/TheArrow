@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpenChest : Interactable {
 
-	public Animator anim;
-	public Collider collider;
+	Animator anim;
+	Collider collider;
 	public GameObject itemInsideChest;
 
 	void Start () {

@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour {
 		demage = Mathf.Clamp(demage, 0, int.MaxValue);
 
 		currentHealth -= demage;
-		Debug.Log(transform.name + " takes" + demage + " hit");
+		//Debug.Log(transform.name + " takes" + demage + " hit");
 
 		if (onHealthChanged != null)
 			onHealthChanged.Invoke(maxHealth, currentHealth);
@@ -35,8 +35,20 @@ public class CharacterStats : MonoBehaviour {
 
 	public virtual void Die()
 	{
-		Debug.Log(transform.name + " has died :(");
+		//Debug.Log(transform.name + " has died :(");
 		if (onDied != null)
 			onDied.Invoke();
 	}
+
+	public void Heal(int healingPts)
+	{
+
+		currentHealth += healingPts;
+		//Debug.Log(transform.name + " Heals" + healingPts);
+
+		if (onHealthChanged != null)
+			onHealthChanged.Invoke(maxHealth, currentHealth);
+	}
+
+
 }
