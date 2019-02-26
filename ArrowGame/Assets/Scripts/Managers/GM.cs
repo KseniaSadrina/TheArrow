@@ -44,4 +44,19 @@ public class GM : MonoBehaviour {
 		task();
 		isCoroutineExecuting = false;
 	}
+
+	public void PlayAgain()
+	{
+		SceneManager.LoadScene(1);
+	}
+
+	public void MainMenu()
+	{
+		SceneManager.LoadScene(0);
+	}
+
+	public void Quit()
+	{
+		Application.Quit();
+	}
 }
