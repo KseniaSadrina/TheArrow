@@ -20,7 +20,7 @@ public class GM : MonoBehaviour {
 
 	public GameObject completeLevelUI;
 	public ScenesFading ScenesAnimFading;
-
+	private bool isCoroutineExecuting;
 
 	public void RestartLevel()
 	{
@@ -32,10 +32,16 @@ public class GM : MonoBehaviour {
 		completeLevelUI.SetActive(true);
 		var currentSceneIndx = SceneManager.GetActiveScene().buildIndex;
 		if (SceneManager.sceneCountInBuildSettings > currentSceneIndx + 1)
-		{
-			ScenesAnimFading.FadeToNextLevel();
-		}
+			StartCoroutine(ExecuteAfterTime(3f, () => ScenesAnimFading.FadeToNextLevel()));
 	}
 
-	
+	IEnumerator ExecuteAfterTime(float time, Action task)
+	{
+		if (isCoroutineExecuting)
+			yield break;
+		isCoroutineExecuting = true;
+		yield return new WaitForSeconds(time);
+		task();
+		isCoroutineExecuting = false;
+	}
 }
