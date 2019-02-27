@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
 	// Use this for initialization
 	Camera cam;PlayerMotor motor;
-	public Interactable focusedItem;
+	public Interactable focusedItem; 
 	public LayerMask movementMask;
 	
 
