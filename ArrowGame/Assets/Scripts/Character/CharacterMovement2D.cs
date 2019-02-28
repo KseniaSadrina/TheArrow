@@ -2,25 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement2D : MonoBehaviour {
+public class CharacterMovement2D: MonoBehaviour {
 
 	public CharacterController2D controller;
+
+	public Animator animator;
 	float horizontalMove = 0f;
 	bool jump = false;
 	public float runSpeed = 40f;
-	// Use this for initialization
+
+	private void Start()
+	{
+		animator = GetComponentInChildren<Animator>();
+	}
+
 	void Update () {
 		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+		animator.SetFloat("speedPercent", Mathf.Abs(horizontalMove));
+
 		if (Input.GetButtonDown("Jump"))
-		{
 			jump = true;
-			Debug.Log("Jumping " + jump);
-		}
 	}
 	
-	// Update is called once per frame
 	void FixedUpdate () {
-		controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+		controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
 		jump = false;
 	}
 }

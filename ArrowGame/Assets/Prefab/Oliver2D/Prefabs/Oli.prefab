@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 4524107650063624}
   - component: {fileID: 95223708730317120}
   m_Layer: 0
-  m_Name: Hunter
+  m_Name: Oli
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

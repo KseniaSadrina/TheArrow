@@ -12,12 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Island/Island.unity
     guid: 5b72b99fb5e114ac3a362325e0a78509
   - enabled: 1
-    path: Assets/Scenes/FinalCombat/Oliver's Island.unity
+    path: Assets/Scenes/2D/NandaParbat.unity
+    guid: d30fbee988f498842a6e22beea9f1786
+  - enabled: 1
+    path: Assets/Scenes/FinalCombat/FinalCombat.unity
     guid: a58845ffea71d18439b361cd8b4391b7
   - enabled: 0
     path: 
-    guid: 91ecec362723c8d418f638dae2d341df
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

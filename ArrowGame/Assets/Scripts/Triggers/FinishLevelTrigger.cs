@@ -22,4 +22,13 @@ public class FinishLevelTrigger : MonoBehaviour {
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (isLevelComplete) return;
+		if (collision.tag == "Player")
+		{
+			gameManager.CompleteLevel();
+			isLevelComplete = true;
+		}
+	}
 }

@@ -10,6 +10,7 @@ TagManager:
   - 3
   - 4
   - Arrow
+  - Enemy
   layers:
   - Default
   - TransparentFX
