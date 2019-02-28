@@ -15,6 +15,7 @@ public class CharacterMovements2D : MonoBehaviour {
 	private void Start()
 	{
 		animator = GetComponentInChildren<Animator>();
+		controller = GetComponent<CharacterController2D>();
 	}
 
 	void Update()

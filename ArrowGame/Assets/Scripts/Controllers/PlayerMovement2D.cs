@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class PlayerMovement2D : CharacterMovement2D {
 
-	GM gameManager;
+	PlayerManager playerManager;
+	bool isDead;
 
-	private void Update()
+	protected new void Start()
 	{
-		
+		base.Start();
+		playerManager = PlayerManager.instance;
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (isDead) return;
 		if (collision.collider.tag == "Enemy")
 		{
 			// plays animation of death
 			animator.SetTrigger("die");
-			// then freeze the game and open the replay menu
-
+			playerManager.KillPlayer();
+			isDead = true;
 		}
 	}
 }
 
 
-// TODO: 1. Add disappearing coins + coins counter
+// TODO: 0. DIALOG!
+//       1. Add disappearing coins + coins counter
 //       2. add patrol to enemy + add one more enemy
 //       3.LOD + RAY rendering + camera switch
 //       4. Arrow shooting

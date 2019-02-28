@@ -7,7 +7,7 @@ public class CharacterController2D : MonoBehaviour
 {
 
 	[SerializeField] private float m_JumpForce = 400f;                          // Amount of force added when the player jumps.
-	[Range(0, .3f)] [SerializeField] protected float m_MovementSmoothing = .05f;  // How much to smooth out the movement
+	[Range(0, .3f)] [SerializeField] public float m_MovementSmoothing = .05f;  // How much to smooth out the movement
 	[SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
 	[SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
 	[SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
@@ -91,7 +91,7 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
-	private void Flip()
+	public void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
@@ -100,6 +100,11 @@ public class CharacterController2D : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	public void MoveTowards(Vector3 targetPosition, float step)
+	{
+		transform.position = Vector2.MoveTowards(transform.position, targetPosition, step * Time.deltaTime);
 	}
 
 }

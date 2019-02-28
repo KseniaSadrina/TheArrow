@@ -19,12 +19,19 @@ public class PlayerManager : MonoBehaviour {
 
 	#endregion
 
+	public event Action onPlayerDied;
 	public float restartDelay = 3f;
 	public GameObject player;
+	private bool isDead;
 
 
 	internal void KillPlayer()
 	{
-		gameManager.RestartLevel();
+		if (isDead) return;
+		if (onPlayerDied != null)
+		{
+			onPlayerDied.Invoke();
+			isDead = true;
+		}
 	}
 }

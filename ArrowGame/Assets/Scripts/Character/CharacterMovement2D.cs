@@ -11,9 +11,10 @@ public class CharacterMovement2D: MonoBehaviour {
 	bool jump = false;
 	public float runSpeed = 40f;
 
-	private void Start()
+	protected void Start()
 	{
 		animator = GetComponentInChildren<Animator>();
+		controller = GetComponent<CharacterController2D>();
 	}
 
 	void Update () {
