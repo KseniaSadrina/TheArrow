@@ -22,6 +22,9 @@ public class GM : MonoBehaviour {
 	public ScenesFading ScenesAnimFading;
 	private bool isCoroutineExecuting;
 
+
+	public bool is2D = false;
+
 	public void RestartLevel()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

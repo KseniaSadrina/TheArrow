@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,23 +25,27 @@ public class Inventory : MonoBehaviour {
 
 	public int space = 10; 
 	public List<Item> items = new List<Item>();
-
-	public delegate void OnItemChanged();
-	public OnItemChanged onItemChangedCallback;
+	
+	public event Action<Item> onItemChangedCallback;
 
 
 	public bool Add(Item item)
 	{
 		if (!item.isDefaultItem)
 		{
-			if (items.Count >= space)
+
+
+			if (items.Count >= space && item.name != "Coin")
 			{
 				//Debug.Log("Can't store more items in the inventory");
 				return false ;
 			}
+			if (item.name != "Coin")
+			{
+				items.Add(item);
+			}
 
-			items.Add(item);
-			NotifySubscribers();
+			NotifySubscribers(item);
 		}
 
 		return true;
@@ -49,12 +54,12 @@ public class Inventory : MonoBehaviour {
 	public void Remove(Item item)
 	{
 		items.Remove(item);
-		NotifySubscribers();
+		NotifySubscribers(item);
 	}
 
-	public void NotifySubscribers()
+	public void NotifySubscribers(Item item)
 	{
 		if (onItemChangedCallback != null)
-			onItemChangedCallback.Invoke();
+			onItemChangedCallback.Invoke(item);
 	}
 }
